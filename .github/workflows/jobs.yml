@@ -1,0 +1,23 @@
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Choose environment"
+        required: true
+        default: "Staging"
+        type: choice
+        options:
+          - Staging
+          - Production
+
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: |
+          npm install
+          npm run build
+          working-directory: ./temp
+          shell: bash
+          #pwsh, cmd, powershell, python
